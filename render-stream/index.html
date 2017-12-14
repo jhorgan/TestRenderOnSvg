@@ -1,0 +1,28 @@
+<head>
+
+</head>
+
+<body>
+    <svg id="svg" width="800" height="800" xmlns="http://www.w3.org/2000/svg" xmlns:x="http://www.w3.org/1999/xlink">
+        <defs>
+            <g id="dg-pt-Part">
+                <circle r="40" stroke="black" stroke-width="3" fill="blue" />
+            </g>
+            <g id="dg-pq-Buffer">
+                <circle r="40" stroke="black" stroke-width="3" fill="red" />
+            </g>
+            <g id="dg-ic-MachineElement">
+                <circle r="40" stroke="black" stroke-width="3" fill="black" />
+                <text x="0" y="60">Machine001</text>
+            </g>
+        </defs>
+        <use x="200" y="200" href="#dg-pt-Part" id="pt1"></use>
+        <use x="400" y="200" href="#dg-pq-Buffer" id="buffer001"></use>
+        <use x="600" y="200" href="#dg-ic-MachineElement" id="machine001"></use>
+    </svg>
+    <button id="downloadButton">Download...</button>
+    <button id="changeButton">Change</button>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/snapsvg/dist/snap.svg-min.js"></script>
+    <script src="./dist/bundle.js"></script>
+</body>
