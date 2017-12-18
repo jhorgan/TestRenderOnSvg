@@ -1,11 +1,14 @@
 import { SimEventCommandAdapter } from "../src/simEventCommandAdapter";
 import { expect } from 'chai';
-import 'mocha';
+import { suite, test, slow, timeout } from "mocha-typescript";
+import "mocha";
 
-describe('SimEventCommandAdapter convert simple Create command', () => {
+@suite
+class TestSimEventCommandAdapter {
 
-  it('should convert it to Svg', () => {
-    // Arrange    
+  @test
+  whenValidCreateCommandShouldConvertToValidSvg() {
+    // arrange    
     const adapter = new SimEventCommandAdapter();
     const xml = `<create time='0.000000' geometry='C:\Users\Public\Documents\Lanner Group\WITNESS 21 Horizon\W3D\Assets\Shapes\dg-pq-Buffer' instanceName='[121] Buffers001(1) - Part Queue'>
       <queueInfo queueParent='dg-pq-Buffer'>
@@ -15,11 +18,10 @@ describe('SimEventCommandAdapter convert simple Create command', () => {
       </queueInfo>
     </create>`;
 
-    // Act 
+    // act 
     const result = adapter.adaptCommand(xml);
 
-    // Assert
+    // assert
     expect(result).to.equal("test");
-  });
-
-});
+  }
+}

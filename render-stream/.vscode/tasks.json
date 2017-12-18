@@ -1,0 +1,23 @@
+{
+    "version": "0.1.0",
+    "isShellCommand": true,
+    "tasks": [
+        {
+            "taskName": "build",
+            "command": "${workspaceFolder}/node_modules/.bin/webpack",
+            "suppressTaskName": true,
+            "isBuildCommand": true,
+            "isBackground": false
+        },
+        {
+            "taskName": "test",
+            "command": "npm",
+            "args": [
+                "test"
+            ],
+            "suppressTaskName": true,
+            "isBuildCommand": true,
+            "isBackground": false
+        }
+    ]
+}

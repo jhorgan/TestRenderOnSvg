@@ -1,18 +1,9 @@
+import { expect } from "chai";
+import { suite, test, slow, timeout } from "mocha-typescript";
+import "mocha";
 import { SimEventManager, State } from "../src/simEventManager";
-import { expect } from 'chai';
-import 'mocha';
 
-describe('SimEventManager start', () => {
+@suite
+class TestSimEventManager {
 
-  it('should set the state to downloading', () => {
-    // Arrange    
-    //const manager = new SimEventManager();
-
-    // Act 
-    //manager.start(0);
-
-    // Assert
-    //expect(manager.getState()).to.equal(State.Downloading);
-  });
-
-});
+}

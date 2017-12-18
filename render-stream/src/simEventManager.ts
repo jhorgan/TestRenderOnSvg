@@ -2,12 +2,12 @@ export interface ILocationData {
     ip: string;
     country_code: string;
     country_name: string;
-};
+}
 
 export enum State {
     Downloading,
     Paused,
-    Stopped
+    Stopped,
 }
 
 export class SimEventManager {
@@ -22,17 +22,16 @@ export class SimEventManager {
     }
 
     public async getData() {
-        let response = await fetch("http://freegeoip.net/json/");
-        let data: ILocationData = await response.json();
+        const response = await fetch("http://freegeoip.net/json/");
+        const data: ILocationData = await response.json();
 
         return data;
     }
 
     public downloadDataAsync(): Promise<string> {
 
-        let p: Promise<string> = new Promise((resolve, reject) => {
-
-        });
+        // tslint:disable-next-line:no-empty
+        const p: Promise<string> = new Promise((resolve, reject) => { });
         return p;
     }
 }
