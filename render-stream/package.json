@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack",
-    "test": "mocha -r ts-node/register ./test/**/*.ts"
+    "test": "mocha -r isomorphic-fetch -r ts-node/register ./test/**/*.ts"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "@types/whatwg-fetch": "0.0.33",
     "@types/xml-js": "^1.0.0",
     "chai": "^4.1.2",
+    "isomorphic-fetch": "^2.2.1",
     "mocha": "^4.0.1",
     "mocha-typescript": "^1.1.12",
     "ts-loader": "^3.2.0",
