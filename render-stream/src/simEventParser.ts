@@ -24,10 +24,14 @@ export interface ISimEventCommand {
 export type SimEventParserCallback = (commandText: ISimEventCommand) => void;
 
 /**
- * Parse the supplied buffer of WITNESS 3D xml commands into a series of json objects.
+ * Parse the supplied buffer of 3D xml commands into a series of json objects.
  * 
  * Data is read by the SimEventDownloader in chunks and passed to the SimEventParser to 
  * read the 3D xml commands.
+ * 
+ * Handles partially constructed xml data by storing any incomplete data, that 
+ * won't parse correctly, in a buffer which is saved for the next time the parse
+ * method is called
  */
 export class SimEventParser {
 

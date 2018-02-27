@@ -1,6 +1,6 @@
 
 /**
- * Options passed to the downloader class
+ * Options passed to the SimEventDownloader during construction
  */
 export interface ISimEventDownloaderOptions {
     onerror(message: string): void;
@@ -38,12 +38,14 @@ export class SimEventDownloader {
     }
 
     /**
-     * Download the data in chunks.
+     * Download the data in chunks. The download can be stopped when the caller
+     * invokes the stop method. The next start position is maintained so it 
+     * can be resumed from the correct position
      */
     public async download(): Promise<void> {
         const chunkSize = Math.pow(2, 16);
 
-        // get the data length
+        // get the data length (size of the all 3D events in bytes)
         let contentLength = await this.calculateContentLength();
 
         // reset the stopped flag
@@ -62,7 +64,7 @@ export class SimEventDownloader {
 
                     // console.log(`SimEventDownloader: Downloaded ${this.startPosition}-${endPosition} of ${contentLength}`);
 
-                    // calc the next start position
+                    // calc the next start and end chunk positions
                     this.startPosition = endPosition + 1;
                     endPosition = (this.startPosition + chunkSize < contentLength) ? this.startPosition + chunkSize : contentLength;
 
@@ -78,7 +80,7 @@ export class SimEventDownloader {
 
             } while (hasMore && !this.isStopped);
 
-            // stopped?
+            // stopped by the user?
             if (this.isStopped) {
                 this.raiseOnStopped();
             }

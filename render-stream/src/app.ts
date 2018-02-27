@@ -9,9 +9,20 @@ export class App {
     public async handleDownload(e: Event): Promise<void> {
         console.log("Start downloading");
 
-        const service = new SimEventManager();
-        const data = await service.getData();
-        console.log(`${data.ip}`);
+        let options = {
+            url: "https://lannertest.blob.core.windows.net/test/W3DServer.real.xml?st=2017-12-19T10%3A26%3A00Z&se=2021-12-18T10%3A26%3A00Z&sp=rl&sv=2015-12-11&sr=b&sig=oPPagICkXutrNxolCi404IDlU7MPS1tvhMA7L8oF5Xw%3D",
+            onsimevent: (event: object) => {
+                console.log(JSON.stringify(event));
+            },
+            onsimerror: (message: string) => {
+                console.error(message);
+            }
+        };
+        const manager = new SimEventManager(options);
+        if (!manager.run()) {
+            console.error("SimEventManager failed to run");
+        }
+
     }
 
     public handleChange(e: Event): void {
